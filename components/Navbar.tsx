@@ -13,8 +13,7 @@ interface Provider {
 }
 
 const Navbar = () => {
-  const isUserLoggedIn = true
-
+  const { data: session } = useSession()
   const [providers, setProviders] = useState(null)
   const [toggleDropDown, setToggleDropDown] = useState(false)
 
@@ -39,7 +38,7 @@ const Navbar = () => {
       </Link>
 
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div>
             <div className="flex gap-3 md:gap-5">
               <Link className="black_btn" href="/create-prompt">
@@ -56,7 +55,7 @@ const Navbar = () => {
               </button>
               <Link href="/profile">
                 <Image
-                  src="/assets/images/logo.svg"
+                  src={session?.user.image}
                   width={40}
                   alt="pfp"
                   height={40}
@@ -82,11 +81,11 @@ const Navbar = () => {
       </div>
       {/* Mobile Nav */}
       <div className="flex relative sm:hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
-              alt="Logo of PromptPortal"
+              src={session?.user.image}
+              alt="pfp"
               width={30}
               height={30}
               onClick={() => {
