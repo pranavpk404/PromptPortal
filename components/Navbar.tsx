@@ -55,7 +55,7 @@ const Navbar = () => {
               </button>
               <Link href="/profile">
                 <Image
-                  src={session?.user.image}
+                  src={session.user.image}
                   width={40}
                   alt="pfp"
                   height={40}
@@ -84,7 +84,7 @@ const Navbar = () => {
         {session?.user ? (
           <div className="flex">
             <Image
-              src={session?.user.image}
+              src={session.user.image}
               alt="pfp"
               width={30}
               height={30}

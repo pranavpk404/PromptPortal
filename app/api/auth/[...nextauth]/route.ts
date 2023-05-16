@@ -12,20 +12,20 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-      const sessionUser = await User.findOne({ email: session.user.email });
-      session.user.email = sessionUser.email.toString();
+      const sessionUser = await User.findOne({ id: session.user.id });
+      session.user.id = sessionUser.id.toString();
       return session;
     },
     async signIn({ profile }) {
       try {
         await connectToDB();
         const userExists = await User.findOne(
-          { email: profile.email },
+          { id: profile.id },
           { maxTimeMS: 60000 }
         );
         if (!userExists) {
           await User.create({
-            email: profile.email,
+            id: profile.id,
             userName: profile.name.replace(" ", "").toLowerCase(),
             image: profile.image,
           });
