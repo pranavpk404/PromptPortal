@@ -12,6 +12,8 @@ const PromptCardList = ({ data, handleTagClick }) => {
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
+          handleEdit={undefined}
+          handleDelete={undefined}
         />
       ))}
     </div>
@@ -37,7 +39,7 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
-  const filterPrompts = (searchtext) => {
+  const filterPrompts = (searchtext: string) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(
       (item) =>

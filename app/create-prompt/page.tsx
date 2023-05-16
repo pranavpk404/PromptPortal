@@ -1,10 +1,11 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Form from "@/components/Form";
 
 const CreatePrompt = () => {
+  const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const { data: session } = useSession();
   const [post, setPost] = useState({
@@ -20,12 +21,12 @@ const CreatePrompt = () => {
         method: "POST",
         body: JSON.stringify({
           prompt: post.prompt,
-          userID: session?.user.id,
           tag: post.tag,
         }),
       });
       if (response.ok) {
         alert("Done");
+        router.push("/");
       }
     } catch (error) {
       console.log(error);

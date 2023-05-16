@@ -1,29 +1,29 @@
-'use client'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState, useEffect } from 'react'
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 interface Provider {
-  id: string
-  name: string
-  type: string
-  title: string
-  signinUrl: string
+  id: string;
+  name: string;
+  type: string;
+  title: string;
+  signinUrl: string;
 }
 
 const Navbar = () => {
-  const { data: session } = useSession()
-  const [providers, setProviders] = useState(null)
-  const [toggleDropDown, setToggleDropDown] = useState(false)
+  const { data: session } = useSession();
+  const [providers, setProviders] = useState(null);
+  const [toggleDropDown, setToggleDropDown] = useState(false);
 
   useEffect(() => {
     const setProvidersFunc = async () => {
-      const response = await getProviders()
-      setProviders(response)
-    }
-    setProvidersFunc()
-  }, [])
+      const response = await getProviders();
+      setProviders(response);
+    };
+    setProvidersFunc();
+  }, []);
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link className="flex gap-2 flex-center" href="/">
@@ -48,7 +48,7 @@ const Navbar = () => {
                 type="button"
                 className="outline_btn"
                 onClick={() => {
-                  signOut()
+                  signOut();
                 }}
               >
                 Sign Out
@@ -89,7 +89,7 @@ const Navbar = () => {
               width={30}
               height={30}
               onClick={() => {
-                setToggleDropDown((prev) => !prev)
+                setToggleDropDown((prev) => !prev);
               }}
             />
             {toggleDropDown && (
@@ -111,8 +111,8 @@ const Navbar = () => {
                 <button
                   className="mt-5 w-full black_btn"
                   onClick={() => {
-                    setToggleDropDown(false)
-                    signOut()
+                    setToggleDropDown(false);
+                    signOut();
                   }}
                 >
                   Sign Out
@@ -137,7 +137,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
