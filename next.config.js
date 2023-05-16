@@ -1,21 +1,19 @@
-const path = require('path');
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/@",
   experimental: {
-    serverComponentsExternalPackages: ['mongoose'],
+    appDir: true,
+    serverComponentsExternalPackages: ["mongoose"],
   },
   images: {
     domains: ['lh3.googleusercontent.com'],
   },
-  webpack: (config) => {
+  webpack(config) {
     config.experiments = {
       ...config.experiments,
       topLevelAwait: true,
-    };
-    config.resolve.alias['@'] = path.resolve(__dirname);
-    return config;
-  },
-};
+    }
+    return config
+  }
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
