@@ -1,21 +1,17 @@
-import Navbar from '@/components/Navbar'
-import '../styles/global.css'
-import Provider from '@/components/Provider'
+import Navbar from "@/components/Navbar";
+import "../styles/global.css";
+import Provider from "@/components/Provider";
 
 export const metadata = {
-  title: 'PromptPortal',
-  description: 'Discover and Share AI Prompts',
-}
+  title: "PromptPortal",
+  description: "Discover and Share AI Prompts",
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Provider session={undefined}>
+        <Provider>
           <div className="main">
             <div className="gradient" />
           </div>
@@ -26,5 +22,5 @@ export default function RootLayout({
         </Provider>
       </body>
     </html>
-  )
+  );
 }

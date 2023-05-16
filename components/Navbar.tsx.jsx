@@ -4,14 +4,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
-interface Provider {
-  id: string;
-  name: string;
-  type: string;
-  title: string;
-  signinUrl: string;
-}
-
 const Navbar = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
@@ -66,7 +58,7 @@ const Navbar = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((provider: Provider) => (
+              Object.values(providers).map((provider) => (
                 <button
                   type="button"
                   key={provider.id}
@@ -123,7 +115,7 @@ const Navbar = () => {
         ) : (
           <>
             {providers &&
-              Object.values(providers).map((provider: Provider) => (
+              Object.values(providers).map((provider) => (
                 <button
                   type="button"
                   key={provider.id}
