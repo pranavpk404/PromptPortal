@@ -26,10 +26,10 @@ const Nav = () => {
           width={30}
           height={30}
           className="object-contain"
-          alt="Promptopia Logo"
+          alt="promptPortal Logo"
         />
 
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text">Prompt Portal</p>
       </Link>
 
       {/* Desktop Navigation */}
@@ -70,7 +70,14 @@ const Nav = () => {
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
                   >
-                    Sign In with {provider.name}
+                    Sign In with
+                    <Image
+                      className="ml-2 "
+                      src={"/assets/icons/google-logo.svg"}
+                      alt="Google"
+                      width={15}
+                      height={15}
+                    />
                   </button>
                 );
               })}
@@ -79,7 +86,7 @@ const Nav = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex relative">
+      <div className="sm:hidden flex relative ">
         {session?.user ? (
           <div className="flex">
             <Image
@@ -131,7 +138,7 @@ const Nav = () => {
                     key={provider.name}
                     onClick={() => signIn(provider.id)}
                   >
-                    Sign In with {provider.name}
+                    Sign In with Google
                   </button>
                 );
               })}

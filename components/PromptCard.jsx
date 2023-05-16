@@ -1,11 +1,11 @@
-"use client";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const [copied, setCopied] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const { data: session } = useSession();
 
   const router = useRouter();
@@ -24,6 +24,15 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
     }
   };
+
+  const toggleShowFullText = () => {
+    setShowFullText(!showFullText);
+  };
+
+  const truncatedText = post.prompt.substring(0, 500);
+  const displayText = showFullText ? post.prompt : truncatedText;
+  const isTextTruncated = post.prompt.length > 500;
+
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
@@ -40,7 +49,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
           <div className="flex flex-col">
             <h3 className="font-satoshi font-semibold text-gray-900">
-              {post.creator.username}
+              {post.creator.userName}
             </h3>
             <p className="font-inter text-sm text-gray-500">
               {post.creator.email}
@@ -67,7 +76,17 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
         </div>
       </div>
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+      <p className="my-4 font-satoshi text-sm text-gray-700">
+        {displayText}
+        {isTextTruncated && (
+          <button
+            className="text-blue-500 font-inter text-sm underline ml-1"
+            onClick={toggleShowFullText}
+          >
+            {showFullText ? "Show less" : "Show all"}
+          </button>
+        )}
+      </p>
       <p
         className="font-inter text-sm blue_gradient cursor-pointer"
         onClick={() => handleTagClick && handleTagClick(post.tag)}

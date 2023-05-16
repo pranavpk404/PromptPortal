@@ -33,30 +33,28 @@ const Feed = () => {
       setTimeout(() => {
         const searchResult = filteredPosts(e.target.value);
         setAllPosts(searchResult);
-        // console.log("searching...");
       }, 500)
     );
   };
 
   const handleTagClick = (tag) => {
     setSearchText(tag);
-
     const searchResult = filteredPosts(tag);
     setAllPosts(searchResult);
   };
 
-  const fetchPosts = async () => {
-    const response = await fetch("/api/prompt");
-    const data = await response.json();
-
-    setAllPosts(data);
-  };
   useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch("/api/prompt");
+      const data = await response.json();
+
+      setAllPosts(data);
+    };
     fetchPosts();
   }, []);
 
   const filteredPosts = (searchText) => {
-    const regex = new RegExp(searchText, "i"); //i flag for case insensitive search
+    const regex = new RegExp(searchText, "i");
 
     return allPosts.filter(
       (item) =>
