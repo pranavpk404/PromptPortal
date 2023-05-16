@@ -1,18 +1,24 @@
 import mongoose from "mongoose";
+
 let isConnected = false;
-export const connectToDB = async () => {
+
+export const connectToDatabase = async () => {
   mongoose.set("strictQuery", true);
+
   if (isConnected) {
-    console.log("Mongodb is already connected");
+    console.log("MongoDB is already connected");
     return;
   }
+
   try {
-    const URI = process.env.MONGODB_URI;
-    const { connection } = await mongoose.connect(URI, {
+    await mongoose.connect(process.env.MONGODB_URI, {
       dbName: "share_prompt",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
+
     isConnected = true;
-    console.log(`Mongodb is connected to ${connection.host}`);
+    console.log("MongoDB is connected");
   } catch (error) {
     console.log(error);
   }

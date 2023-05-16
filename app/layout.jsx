@@ -1,13 +1,13 @@
-import Navbar from "@/components/Navbar";
-import "../styles/global.css";
-import Provider from "@/components/Provider";
+import Nav from "@components/Nav";
+import Provider from "@components/Provider";
+import "@styles/globals.css";
 
 export const metadata = {
-  title: "PromptPortal",
-  description: "Discover and Share AI Prompts",
+  title: "Prompotopia",
+  description: "Discover & Share AI prompts",
 };
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
@@ -15,12 +15,15 @@ export default function RootLayout({ children }) {
           <div className="main">
             <div className="gradient" />
           </div>
+
           <main className="app">
-            <Navbar />
+            <Nav />
             {children}
           </main>
         </Provider>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
