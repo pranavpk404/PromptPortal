@@ -28,27 +28,29 @@ const handler = NextAuth({
       return session;
     },
 
-    async signIn({ profile }) {
+   async signIn({ account, profile, user, credentials }) {
       try {
-        await connectToDatabase();
+        await connectToDB();
 
-        //check if a user exists in the database
+        // check if user already exists
         const userExists = await User.findOne({ email: profile.email });
-        //if not, create a new user
+
+        // if not, create a new document and save user in MongoDB
         if (!userExists) {
-          const user = await User.create({
+          await User.create({
             email: profile.email,
             username: profile.name.replace(" ", "").toLowerCase(),
-            images: profile.picture,
+            image: profile.picture,
           });
         }
-        return true;
+
+        return true
       } catch (error) {
-        console.log(error);
-        return false;
+        console.log("Error checking if user exists: ", error.message);
+        return false
       }
     },
-  },
-});
+  }
+})
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST }
