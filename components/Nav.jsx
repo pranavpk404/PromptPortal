@@ -23,13 +23,11 @@ const Nav = () => {
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.svg"
-          width={30}
-          height={30}
+          width={150}
+          height={20}
           className="object-contain"
           alt="promptPortal Logo"
         />
-
-        <p className="logo_text">Prompt Portal</p>
       </Link>
 
       {/* Desktop Navigation */}
