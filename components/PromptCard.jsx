@@ -29,12 +29,12 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
     setShowFullText(!showFullText);
   };
 
-  const truncatedText = post.prompt.substring(0, 500);
+  const truncatedText = post.prompt.substring(0, 600);
   const displayText = showFullText ? post.prompt : truncatedText;
   const isTextTruncated = post.prompt.length > 500;
   return (
-    <div className="prompt_card">
-      <div className="flex justify-between items-start gap-5">
+    <div className="prompt_card ">
+      <div className="flex justify-between items-start gap-3">
         <div
           className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
           onClick={handleProfileClick}
