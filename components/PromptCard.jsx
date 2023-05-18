@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
   const [copied, setCopied] = useState(false);
   const [showFullText, setShowFullText] = useState(false);
   const { data: session } = useSession();
@@ -32,7 +32,6 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const truncatedText = post.prompt.substring(0, 500);
   const displayText = showFullText ? post.prompt : truncatedText;
   const isTextTruncated = post.prompt.length > 500;
-
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
@@ -41,7 +40,11 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           onClick={handleProfileClick}
         >
           <Image
-            src={post.creator.images}
+            src={
+              post.creator.images
+                ? post.creator.images
+                : "/assets/images/logo.svg"
+            }
             alt="user_image"
             width={40}
             height={40}
@@ -49,10 +52,10 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
           />
           <div className="flex flex-col">
             <h3 className="font-satoshi font-semibold text-gray-900">
-              {post.creator.username}
+              {post.creator.username ? post.creator.username : "Loading"}
             </h3>
             <p className="font-inter text-sm text-gray-500">
-              {post.creator.email}
+              {post.creator.email ? post.creator.email : "Loading"}
             </p>
           </div>
         </div>
@@ -77,7 +80,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
       </div>
       <p className="my-4 font-satoshi text-sm text-gray-700">
-        {displayText}
+        {displayText ? displayText : "Loading"}
         {isTextTruncated && (
           <button
             className="text-blue-500 font-inter text-sm underline ml-1"
@@ -91,7 +94,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         className="font-inter text-sm blue_gradient cursor-pointer"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
-        {post.tag}
+        {post.tag ? post.tag : "Loading"}
       </p>
 
       {session?.user.id === post.creator._id &&
