@@ -1,20 +1,19 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import PromptCardList from "./PromptCardList";
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  //SEARCH
+  // SEARCH
   const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(null); //to prevent too many requests
+  const [searchTimeout, setSearchTimeout] = useState(null);
 
   const handleSearchChange = (e) => {
-    clearTimeout(searchTimeout); //clear previous timeout
+    clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
-    //debounce search
     setSearchTimeout(
       setTimeout(() => {
         const searchResult = filteredPosts(e.target.value);
@@ -35,6 +34,7 @@ const Feed = () => {
       const data = await response.json();
 
       setAllPosts(data);
+      setIsLoading(false);
     };
     fetchPosts();
   }, []);
@@ -49,6 +49,15 @@ const Feed = () => {
         regex.test(item.prompt)
     );
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+    );
+  }
+
   return (
     <section className="feed">
       <form className="relative w-full flex-center">
