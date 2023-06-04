@@ -32,10 +32,10 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
   const displayText = showFullText ? post.prompt : truncatedText;
   const isTextTruncated = post.prompt.length > 500;
   return (
-    <div className="prompt_card dark:bg-slate-700">
-      <div className="flex justify-between items-start gap-3">
+    <div className="h-fit; break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter dark:border-slate-700 dark:bg-slate-700 md:w-[550px]">
+      <div className="flex items-start justify-between gap-3">
         <div
-          className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
+          className="flex flex-1 cursor-pointer items-center justify-start gap-3"
           onClick={handleProfileClick}
         >
           <Image
@@ -50,17 +50,17 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
             className="rounded-full object-contain"
           />
           <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900">
+            <h3 className="font-satoshi font-semibold text-gray-900 dark:text-gray-50">
               {post.creator.username ? post.creator.username : "Loading"}
             </h3>
-            <p className="font-inter text-sm text-gray-500">
+            <p className="font-inter text-sm text-gray-500 dark:text-gray-400">
               {post.creator.email ? post.creator.email : "Loading"}
             </p>
           </div>
         </div>
 
         <div
-          className="copy_btn"
+          className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-white/10  backdrop-blur dark:bg-black/30"
           onClick={() => {
             handleCopy();
           }}
@@ -78,11 +78,11 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
           />
         </div>
       </div>
-      <p className="my-4 font-satoshi text-sm text-gray-700">
+      <p className="my-4 font-satoshi text-sm text-gray-700 dark:text-gray-300">
         {displayText ? displayText : "Loading"}
         {isTextTruncated && (
           <button
-            className="text-blue-500 font-inter text-sm underline ml-1"
+            className="ml-1 font-inter text-sm text-blue-500 underline"
             onClick={toggleShowFullText}
           >
             {showFullText ? "Show less" : "Show all"}
@@ -90,22 +90,22 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
         )}
       </p>
       <p
-        className="font-inter text-sm blue_gradient cursor-pointer"
+        className="blue_gradient cursor-pointer font-inter text-sm"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         {post.tag ? post.tag : "Loading"}
       </p>
       {session?.user.id === post.creator._id &&
         (usePathname() === "/profile" || usePathname() === "/profile/[id]") && (
-          <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+          <div className="flex-center mt-5 gap-4 border-t border-gray-100 pt-3 dark:border-gray-800">
             <p
-              className="font-inter text-sm green_gradient cursor-pointer"
+              className="green_gradient cursor-pointer font-inter text-sm"
               onClick={handleEdit}
             >
               Edit
             </p>
             <p
-              className="font-inter text-sm orange_gradient cursor-pointer"
+              className="orange_gradient cursor-pointer font-inter text-sm"
               onClick={handleDelete}
             >
               Delete

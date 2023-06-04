@@ -55,22 +55,21 @@ const Feed = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+      <div className="flex h-screen items-center justify-center">
+        <div className="h-16 w-16 animate-spin rounded-full border-b-2 border-t-2 border-gray-900 dark:border-white"></div>
       </div>
     );
   }
 
   return (
-    <section className="feed">
-      <form className="relative w-full flex-center">
+    <section className="mx-auto mt-16 flex w-full max-w-xl flex-col items-center justify-center gap-2 ">
+      <form className="flex-center relative w-full ">
         <input
           type="text"
           placeholder="Search for a tag or a username"
           value={searchText}
           onChange={handleSearchChange}
-          className="search_input peer"
-          required
+          className="peer block w-full rounded-md border bg-white py-2.5 pl-5 pr-12 font-satoshi text-sm font-medium shadow-lg focus:border-black focus:outline-none focus:ring-0  dark:border-slate-700 dark:bg-gray-800 "
         />
       </form>
 
