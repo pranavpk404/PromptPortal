@@ -30,15 +30,18 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("/api/prompt");
-      const data = await response.json();
-
-      setAllPosts(data);
-      setIsLoading(false);
+      try {
+        const response = await fetch("/api/prompt");
+        const data = await response.json();
+        setAllPosts(data);
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
     fetchPosts();
   }, []);
-
   const filteredPosts = (searchText) => {
     const regex = new RegExp(searchText, "i");
 
