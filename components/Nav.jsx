@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getProviders, signIn, signOut, useSession } from "next-auth/react";
+import ThemeSwitch from "./ThemeSwitcher";
+
 const Nav = () => {
   const { data: session } = useSession();
 
@@ -20,6 +22,7 @@ const Nav = () => {
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
+      <ThemeSwitch />
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.svg"

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-
 const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
   const [copied, setCopied] = useState(false);
   const [showFullText, setShowFullText] = useState(false);
@@ -33,7 +32,7 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
   const displayText = showFullText ? post.prompt : truncatedText;
   const isTextTruncated = post.prompt.length > 500;
   return (
-    <div className="prompt_card ">
+    <div className="prompt_card dark:bg-slate-700">
       <div className="flex justify-between items-start gap-3">
         <div
           className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
@@ -96,7 +95,6 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
       >
         {post.tag ? post.tag : "Loading"}
       </p>
-
       {session?.user.id === post.creator._id &&
         (usePathname() === "/profile" || usePathname() === "/profile/[id]") && (
           <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">

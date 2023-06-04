@@ -1,6 +1,8 @@
 import Nav from "@components/Nav";
-import Provider from "@components/Provider";
+import AuthProvider from "@context/AuthProvider";
 import "@styles/globals.css";
+import CustomThemeProvider from "@context/CustomThemeProvider";
+
 export const metadata = {
   title: "Prompt Portal",
   description: "Discover & Share AI prompts",
@@ -10,12 +12,14 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body>
-        <Provider>
-          <main className="app">
-            <Nav />
-            {children}
-          </main>
-        </Provider>
+        <AuthProvider>
+          <CustomThemeProvider>
+            <main className="app">
+              <Nav />
+              {children}
+            </main>
+          </CustomThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
