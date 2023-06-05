@@ -36,7 +36,10 @@ const Feed = () => {
         setAllPosts(data);
         setIsLoading(false);
       } else {
-        alert("failed fetching");
+        const response = await fetch("/api/prompt");
+        const data = await response.json();
+        setAllPosts(data);
+        setIsLoading(false);
       }
     };
     fetchPosts();
