@@ -14,7 +14,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
 
       <form
         onSubmit={handleSubmit}
-        className="my-10 flex w-full max-w-2xl flex-col gap-7 rounded-xl border border-gray-200 bg-white/20 p-10 dark:bg-gray-950"
+        className="my-10 flex w-full max-w-2xl flex-col gap-7 rounded-xl border border-gray-200 bg-white/20 p-10 dark:bg-gray-900"
       >
         <label>
           <span className="font-satoshi text-base font-semibold text-gray-700 dark:text-gray-50">
@@ -26,7 +26,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             onChange={(e) => setPost({ ...post, prompt: e.target.value })}
             placeholder="Write your post here"
             required
-            className="form_textarea dark:text-gray-50s dark:bg-gray-950"
+            className="form_textarea dark:text-gray-50s dark:bg-gray-900"
           />
         </label>
 
@@ -43,7 +43,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             type="text"
             placeholder="#Tag"
             required
-            className="form_input dark:text-gray-50s dark:bg-gray-950"
+            className="form_input dark:text-gray-50s dark:bg-gray-900"
           />
         </label>
 

@@ -11,7 +11,7 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body className="bg-black">
+      <body>
         <AuthProvider>
           <CustomThemeProvider>
             <main className="app">

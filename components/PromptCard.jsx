@@ -32,7 +32,7 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
   const displayText = showFullText ? post.prompt : truncatedText;
   const isTextTruncated = post.prompt.length > 500;
   return (
-    <div className="h-fit break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter dark:border-slate-700 dark:bg-gray-950 md:w-[550px]">
+    <div className="h-fit break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter dark:border-slate-700 dark:bg-gray-900 md:w-[550px]">
       <div className="flex items-start justify-between gap-3">
         <div
           className="flex flex-1 cursor-pointer items-center justify-start gap-3"
@@ -97,7 +97,7 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
       </p>
       {session?.user.id === post.creator._id &&
         (usePathname() === "/profile" || usePathname() === "/profile/[id]") && (
-          <div className="flex-center mt-5 gap-4 border-t border-gray-100 pt-3 dark:border-gray-800">
+          <div className="flex-center mt-5 gap-4 border-t border-gray-100 pt-3 dark:border-gray-900">
             <p
               className="green_gradient cursor-pointer font-inter text-sm"
               onClick={handleEdit}

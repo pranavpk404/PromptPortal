@@ -16,9 +16,9 @@ const ThemeSwitch = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  if (!mounted) {
-    return <Image alt="moon" height="32" width="32" src="" />;
-  }
+  // if (!mounted) {
+  //   return <Image alt="moon" height="32" width="32" src="" />;
+  // }
 
   return (
     <button

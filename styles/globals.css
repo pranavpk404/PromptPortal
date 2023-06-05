@@ -2,20 +2,15 @@
 
 @tailwind base;
 @tailwind components;
+
 @tailwind utilities;
-
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
-
-/* Tailwind Styles */
 
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
 .black_btn {
-  @apply dark:border-slate-700 dark:hover:bg-gray-950 hover:text-white/10 dark:text-white dark:bg-gray-950 rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  @apply dark:border-slate-700 dark:hover:bg-gray-900 hover:text-white/10 dark:text-white dark:bg-gray-900 rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
 .orange_gradient {
@@ -51,7 +46,7 @@
 }
 
 .dropdown {
-  @apply dark:border-slate-700 dark:bg-gray-950  absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col items-center gap-2 justify-end;
+  @apply dark:border-slate-700 dark:bg-gray-900  absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col items-center gap-2 justify-end;
 }
 
 .dropdown_link {

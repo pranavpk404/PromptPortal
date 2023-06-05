@@ -31,16 +31,13 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch("/api/prompt");
-      const data = await response.json();
-      setAllPosts(data);
-      setIsLoading(false);
-      // if (response.status === 200) {
-      //   const data = await response.json();
-      //   setAllPosts(data);
-      //   setIsLoading(false);
-      // } else {
-      //   alert("failed fetching");
-      // }
+      if (response.status === 200) {
+        const data = await response.json();
+        setAllPosts(data);
+        setIsLoading(false);
+      } else {
+        alert("failed fetching");
+      }
     };
     fetchPosts();
   }, []);
@@ -72,7 +69,7 @@ const Feed = () => {
           placeholder="Search for a tag or a username"
           value={searchText}
           onChange={handleSearchChange}
-          className="peer block w-full rounded-md border bg-white py-2.5 pl-5 pr-12 font-satoshi text-sm font-medium shadow-lg focus:border-black focus:outline-none focus:ring-0  dark:border-slate-700 dark:bg-gray-950 "
+          className="peer block w-full rounded-md border bg-white py-2.5 pl-5 pr-12 font-satoshi text-sm font-medium shadow-lg focus:border-black focus:outline-none focus:ring-0  dark:border-slate-700 dark:bg-gray-800 "
         />
       </form>
 
