@@ -4,7 +4,7 @@ import PromptCard from "./PromptCard";
 const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
   return (
     <section className="w-full">
-      <h1 className="text-2xl">
+      <h1 className="text-3xl">
         <span className="blue_gradient">{name} </span>Profile
       </h1>
       <p className="text-gray-600 dark:text-gray-400">{desc}</p>

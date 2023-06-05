@@ -3,7 +3,7 @@ import Feed from "@components/Feed";
 const Home = () => {
   return (
     <section className="flex-center w-full flex-col">
-      <h1 className="mt-5 text-center text-5xl font-extrabold leading-[1.15] text-black dark:text-gray-200 sm:text-6xl">
+      <h1 className="mt-5 text-center text-4xl font-extrabold leading-[1.15] text-black dark:text-gray-200 sm:text-6xl">
         Discover & Share
         <br className="max-md:hidden" />
         <span className="orange_gradient  text-center">

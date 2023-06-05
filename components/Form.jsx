@@ -4,7 +4,7 @@ import React from "react";
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (
     <section className="flex-start w-full max-w-full flex-col">
-      <h1 className="text-left  text-2xl">
+      <h1 className="text-left  text-3xl">
         <span className="orange_gradient">{type} Post</span>
       </h1>
       <p className="max-w-2xl; mt-5  max-w-md text-left text-lg text-gray-600  dark:text-gray-400 sm:text-xl">
