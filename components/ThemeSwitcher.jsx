@@ -1,3 +1,4 @@
+"use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -16,14 +17,12 @@ const ThemeSwitch = () => {
   };
 
   if (!mounted) {
-    return (
-      <Image alt="moon" height="32" width="32" src="/assets/icons/moon.svg" />
-    );
+    return <Image alt="moon" height="32" width="32" src="" />;
   }
 
   return (
     <button
-      className="theme-switch"
+      className="ml-8"
       onClick={handleToggleTheme}
       aria-label={
         theme === "light" ? "Switch to Dark Theme" : "Switch to Light Theme"

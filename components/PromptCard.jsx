@@ -32,7 +32,7 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
   const displayText = showFullText ? post.prompt : truncatedText;
   const isTextTruncated = post.prompt.length > 500;
   return (
-    <div className="h-fit; break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter dark:border-slate-700 dark:bg-slate-700 md:w-[550px]">
+    <div className="h-fit break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter dark:border-slate-700 dark:bg-gray-950 md:w-[550px]">
       <div className="flex items-start justify-between gap-3">
         <div
           className="flex flex-1 cursor-pointer items-center justify-start gap-3"
@@ -60,7 +60,7 @@ const PromptCard = ({ handleTagClick, handleEdit, handleDelete, post }) => {
         </div>
 
         <div
-          className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-white/10  backdrop-blur dark:bg-black/30"
+          className="h-7 w-7 cursor-pointer"
           onClick={() => {
             handleCopy();
           }}

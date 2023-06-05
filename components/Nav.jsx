@@ -21,19 +21,20 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
-      <ThemeSwitch />
-      <Link href="/" className="flex gap-2 flex-center">
-        <Image
-          src="/assets/images/logo.svg"
-          width={50}
-          height={50}
-          alt="promptPortal Logo"
-        />
-      </Link>
+    <nav className="mb-16 flex w-full pt-3 align-middle">
+      <div className="flex items-center justify-center">
+        <Link href="/" className="flex-center flex gap-2">
+          <Image
+            src="/assets/images/logo.svg"
+            width={32}
+            height={32}
+            alt="promptPortal Logo"
+          />
+        </Link>
+      </div>
 
       {/* Desktop Navigation */}
-      <div className="sm:flex hidden">
+      <div className="ml-auto hidden sm:flex">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
@@ -44,7 +45,7 @@ const Nav = () => {
               onClick={() => {
                 signOut();
               }}
-              className="outline_btn"
+              className="black_btn"
             >
               Sign Out
             </button>
@@ -86,7 +87,7 @@ const Nav = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex relative ">
+      <div className="relative ml-auto flex sm:hidden">
         {session?.user ? (
           <div className="flex">
             <Image
@@ -120,7 +121,7 @@ const Nav = () => {
                     setToggleDropdown(false);
                     signOut();
                   }}
-                  className="mt-5 w-full black_btn"
+                  className="black_btn mt-5 w-full"
                 >
                   Sign Out
                 </button>
@@ -145,6 +146,7 @@ const Nav = () => {
           </>
         )}
       </div>
+      <ThemeSwitch />
     </nav>
   );
 };
