@@ -35,7 +35,11 @@ const fetchPosts = useCallback(async () => {
       const data = await response.json();
       setAllPosts(data);
     } else {
-      throw new Error("Failed to fetch data");
+       const response = await fetch("/api/prompt");
+    if (response.status === 200) {
+      const data = await response.json();
+      setAllPosts(data);
+    }
     }
   } catch (error) {
     console.error(error);
