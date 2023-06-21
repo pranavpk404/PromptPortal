@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useCallback } from "react";
 import PromptCardList from "./PromptCardList";
 
 const Feed = () => {
@@ -28,22 +28,26 @@ const Feed = () => {
     setAllPosts(searchResult);
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch("/api/prompt");
-      if (response.status === 200) {
-        const data = await response.json();
-        setAllPosts(data);
-        setIsLoading(false);
-      } else {
-        const response = await fetch("/api/prompt");
-        const data = await response.json();
-        setAllPosts(data);
-        setIsLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
+const fetchPosts = useCallback(async () => {
+  try {
+    const response = await fetch("/api/prompt");
+    if (response.status === 200) {
+      const data = await response.json();
+      setAllPosts(data);
+    } else {
+      throw new Error("Failed to fetch data");
+    }
+  } catch (error) {
+    console.error(error);
+   
+  } finally {
+    setIsLoading(false);
+  }
+}, []);
+
+useEffect(() => {
+  fetchPosts();
+}, [fetchPosts]);
 
   const filteredPosts = (searchText) => {
     const regex = new RegExp(searchText, "i");
