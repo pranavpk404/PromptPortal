@@ -30,17 +30,11 @@ const Feed = () => {
 
 const fetchPosts = useCallback(async () => {
   try {
-    const response = await fetch("/api/prompt");
-    if (response.status === 200) {
+      const warmUp = await fetch("/api/prompt");
+      const response = await fetch("/api/prompt");
       const data = await response.json();
       setAllPosts(data);
-    } else {
-       const response = await fetch("/api/prompt");
-    if (response.status === 200) {
-      const data = await response.json();
-      setAllPosts(data);
-    }
-    }
+
   } catch (error) {
     console.error(error);
    

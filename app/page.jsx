@@ -11,7 +11,7 @@ const Home = () => {
           AI-Powered Prompts
         </span>
       </h1>
-      <p className="max-w-2xl; mt-5 text-center text-lg text-gray-600 dark:text-gray-400 sm:text-xl ">
+      <p className="max-w-2xl mt-5 text-center text-lg text-gray-600 dark:text-gray-400 sm:text-xl ">
         Powered by AI, Embraced by AI
       </p>
       <Feed />
