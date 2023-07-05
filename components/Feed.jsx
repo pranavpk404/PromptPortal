@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import PromptCardList from "./PromptCardList";
-
+import axios from 'axios';
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,22 +28,21 @@ const Feed = () => {
     setAllPosts(searchResult);
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch("/api/prompt");
-      if (response.status === 200) {
-        const data = await response.json();
-        setAllPosts(data);
-        setIsLoading(false);
-      } else {
-        const response = await fetch("/api/prompt");
-        const data = await response.json();
-        setAllPosts(data);
-        setIsLoading(false);
-      }
-    };
-    fetchPosts();
-  }, []);
+
+useEffect(() => {
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get('/api/prompt');
+      const data = response.data;
+      setAllPosts(data);
+      setIsLoading(false);
+    } catch (error) {
+      // Handle error
+      console.error('Error fetching posts:', error);
+    }
+  };
+  fetchPosts();
+}, []);
 
   const filteredPosts = (searchText) => {
     const regex = new RegExp(searchText, "i");
